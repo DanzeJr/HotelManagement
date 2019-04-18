@@ -1,5 +1,6 @@
 package hotel.views;
 
+import hotel.daos.StaffDAO;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -478,10 +479,10 @@ public class LoginJFrame extends javax.swing.JFrame {
     }
     
     private void login() {
-        String username = ltxtUsername.getText().toLowerCase();        
+        String id = ltxtUsername.getText().toLowerCase();        
         String password = new String(ltxtPassword.getPassword());
         
-        if (username.isEmpty())
+        if (id.isEmpty())
             llblMsgU.setText("Mã nhân viên không được bỏ trống");
         else {
             llblMsgU.setText("");
@@ -493,34 +494,21 @@ public class LoginJFrame extends javax.swing.JFrame {
         
         if (valid) {
             try {
-                UserDAO dao = new UserDAO();
-                String role = dao.checkLogin(username, password);
-                if (role.equals("NO"))
-                    JOptionPane.showMessageDialog(this, rb.getString("invalidUP"));
-                else if (role.equals("DEL"))
-                    JOptionPane.showMessageDialog(this, rb.getString("deUser"));
-                else {
-                    if (role.equals("ADMIN")) {
-                        new AdminJFrame(username).setVisible(true);
-                        this.dispose();
-                    }  else if (role.equals("USER")) {
-                        new UserJFrame(username).setVisible(true);
-                        this.dispose();
-                    } else {
-                        JOptionPane.showMessageDialog(this, rb.getString("invalidRole"));
-                    }
-                }                
+                StaffDAO dao = new StaffDAO();
+                boolean check = dao.checkLogin(id, password);
+                if (check) {
+                    new StaffJFrame(id).setVisible(true);
+                    this.dispose();
+                }
             } catch (Exception e) {
                 Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, e);
             }
-        } else {
-            JOptionPane.showMessageDialog(this, rb.getString("inputErr"));
         }
     }
     
     private void signUp() {
         try {
-            String username = stxtUsername.getText().toLowerCase();
+            String id = stxtUsername.getText().toLowerCase();
             String password = new String(stxtPassword.getPassword());
             String cfPassword = new String(stxtCfPassword.getPassword());
             RaceDAO raceDAO = new RaceDAO();
@@ -529,7 +517,7 @@ public class LoginJFrame extends javax.swing.JFrame {
             Date date = new Date();
             Timestamp currentTime = new Timestamp(date.getTime());
             
-            if (username.isEmpty())
+            if (id.isEmpty())
                 slblMsgU.setText(rb.getString("blankUser"));
             if (password.isEmpty())
                 slblMsgP.setText(rb.getString("blankPw"));
@@ -552,15 +540,15 @@ public class LoginJFrame extends javax.swing.JFrame {
 
             if (valid) {
                 UserDAO userDAO = new UserDAO();               
-                StringBuilder stb = new StringBuilder(username);
-                stb.setCharAt(0, Character.toUpperCase(username.charAt(0))); //in hoa chu cai dau tien
-                username = stb.toString();
-                UserDTO userDTO = new UserDTO(username, "", "", "USER", raceID, charGender, currentTime, raceDTO.getHealth(), raceDTO.getDamage(), raceDTO.getStrength(), 0);
+                StringBuilder stb = new StringBuilder(id);
+                stb.setCharAt(0, Character.toUpperCase(id.charAt(0))); //in hoa chu cai dau tien
+                id = stb.toString();
+                UserDTO userDTO = new UserDTO(id, "", "", "USER", raceID, charGender, currentTime, raceDTO.getHealth(), raceDTO.getDamage(), raceDTO.getStrength(), 0);
                 userDTO.setPassword(password);
                 userDTO.setScoreDate(currentTime);
                 if (userDAO.insert(userDTO)) {
                     JOptionPane.showMessageDialog(this, rb.getString("SUS"));
-                    new UserJFrame(username).setVisible(true);
+                    new UserJFrame(id).setVisible(true);
                     this.dispose();
                 } else {
                     JOptionPane.showMessageDialog(this, rb.getString("errTry"));
@@ -597,8 +585,8 @@ public class LoginJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_lbtnLoginActionPerformed
 
     private void ltxtUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ltxtUsernameKeyReleased
-        String username = ltxtUsername.getText();
-        if (username.isEmpty())
+        String id = ltxtUsername.getText();
+        if (id.isEmpty())
             llblMsgU.setText(rb.getString("blankUser"));
         else
             llblMsgU.setText("");
@@ -625,11 +613,11 @@ public class LoginJFrame extends javax.swing.JFrame {
     private void stxtUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stxtUsernameKeyReleased
         //dung KeyReleased Event de co the kiem tra ngay luc nhap
         try {
-            String username = stxtUsername.getText();
+            String id = stxtUsername.getText();
             UserDAO userDAO = new UserDAO();
-            if (username.isEmpty()) {
+            if (id.isEmpty()) {
                 slblMsgU.setText(rb.getString("blankUser"));
-            } else if (userDAO.isExistedUsername(username)) {
+            } else if (userDAO.isExistedUsername(id)) {
                 slblMsgU.setText(rb.getString("existUser"));
             } else {
                 slblMsgU.setText("");
@@ -714,11 +702,11 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
             setUpGUISignUp();
             if (!slblMsgU.getText().isEmpty()) {
-                String username = stxtUsername.getText();
+                String id = stxtUsername.getText();
                 UserDAO userDAO = new UserDAO();
-                if (username.isEmpty()) {
+                if (id.isEmpty()) {
                     slblMsgU.setText(rb.getString("blankUser"));
-                } else if (userDAO.isExistedUsername(username)) {
+                } else if (userDAO.isExistedUsername(id)) {
                     slblMsgU.setText(rb.getString("existUser"));
                 }
             }

@@ -27,7 +27,7 @@ public class StaffJFrame extends javax.swing.JFrame {
     /**
      * Creates new form StaffJFrame
      */
-    public StaffJFrame() {
+    public StaffJFrame(String staff) {
         initComponents();
         setLocationRelativeTo(null);
         spnBirthDate.setEditor(new JSpinner.DateEditor(spnBirthDate, "dd-MM-yyyy")); //sua lai cach hien thi birth date
