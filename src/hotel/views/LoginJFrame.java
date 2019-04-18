@@ -3,12 +3,8 @@ package hotel.views;
 import hotel.daos.StaffDAO;
 import java.awt.CardLayout;
 import java.awt.event.KeyEvent;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -39,45 +35,18 @@ public class LoginJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        sbtnCharGenderGroup = new javax.swing.ButtonGroup();
-        pnlLogin = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lblLogin = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         llblPassword = new javax.swing.JLabel();
         llblUsername = new javax.swing.JLabel();
-        lbtnSignUp = new javax.swing.JButton();
         lbtnLogin = new javax.swing.JButton();
         llblMsgU = new javax.swing.JLabel();
         llblMsgP = new javax.swing.JLabel();
         ltxtUsername = new javax.swing.JTextField();
         ltxtPassword = new javax.swing.JPasswordField();
-        pnlSignUp = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        lblSignUp = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
-        slblUsername = new javax.swing.JLabel();
-        slblPassword = new javax.swing.JLabel();
-        sbtnLogin = new javax.swing.JButton();
-        stxtPassword = new javax.swing.JPasswordField();
-        slblCfPassword = new javax.swing.JLabel();
-        slblRace = new javax.swing.JLabel();
-        slblCharGender = new javax.swing.JLabel();
-        srbtnCharMale = new javax.swing.JRadioButton();
-        srbtnCharFemale = new javax.swing.JRadioButton();
-        sbtnSignUp = new javax.swing.JButton();
-        stxtUsername = new javax.swing.JTextField();
-        slblMsgU = new javax.swing.JLabel();
-        slblMsgCG = new javax.swing.JLabel();
-        slblMsgP = new javax.swing.JLabel();
-        slblMsgCP = new javax.swing.JLabel();
-        stxtCfPassword = new javax.swing.JPasswordField();
-        cbbRace = new javax.swing.JComboBox<>();
-        slblMsgRace = new javax.swing.JLabel();
-        sbtnSwitchLang = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.CardLayout());
 
         jLabel4.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 0));
@@ -94,15 +63,6 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         llblUsername.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         llblUsername.setText("Mã nhân viên:");
-
-        lbtnSignUp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lbtnSignUp.setForeground(new java.awt.Color(0, 153, 51));
-        lbtnSignUp.setText("Đăng ký");
-        lbtnSignUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lbtnSignUpActionPerformed(evt);
-            }
-        });
 
         lbtnLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbtnLogin.setForeground(new java.awt.Color(0, 153, 255));
@@ -140,32 +100,26 @@ public class LoginJFrame extends javax.swing.JFrame {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(116, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(lbtnLogin)
-                        .addGap(91, 91, 91)
-                        .addComponent(lbtnSignUp)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(llblUsername)
-                            .addComponent(llblPassword))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(llblMsgU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(llblMsgP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ltxtUsername)
-                            .addComponent(ltxtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))))
-                .addContainerGap(115, Short.MAX_VALUE))
+                    .addComponent(llblUsername)
+                    .addComponent(llblPassword))
+                .addGap(27, 27, 27)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(llblMsgU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(llblMsgP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ltxtUsername)
+                    .addComponent(ltxtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(236, 236, 236)
+                .addComponent(lbtnLogin)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
-        jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lbtnLogin, lbtnSignUp});
-
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
+                .addContainerGap(115, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(llblUsername)
                     .addComponent(ltxtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -177,279 +131,33 @@ public class LoginJFrame extends javax.swing.JFrame {
                     .addComponent(ltxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(llblMsgP, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(208, 208, 208)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbtnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(100, 100, 100))
+                .addGap(91, 91, 91)
+                .addComponent(lbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(121, 121, 121))
         );
 
-        javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
-        pnlLogin.setLayout(pnlLoginLayout);
-        pnlLoginLayout.setHorizontalGroup(
-            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlLoginLayout.createSequentialGroup()
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblLogin, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlLoginLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
-        pnlLoginLayout.setVerticalGroup(
-            pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlLoginLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(pnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlLoginLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(679, Short.MAX_VALUE)))
-        );
-
-        getContentPane().add(pnlLogin, "card2");
-
-        jLabel5.setFont(new java.awt.Font("Snap ITC", 1, 48)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 102, 0));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("Oasis");
-
-        lblSignUp.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        lblSignUp.setForeground(new java.awt.Color(0, 153, 51));
-        lblSignUp.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSignUp.setText("Sign Up");
-
-        slblUsername.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        slblUsername.setText("Username:");
-
-        slblPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        slblPassword.setText("Password:");
-
-        sbtnLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        sbtnLogin.setForeground(new java.awt.Color(0, 153, 255));
-        sbtnLogin.setText("Login");
-        sbtnLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sbtnLoginActionPerformed(evt);
-            }
-        });
-
-        stxtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                stxtPasswordKeyReleased(evt);
-            }
-        });
-
-        slblCfPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        slblCfPassword.setText("Confirm Password:");
-
-        slblRace.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        slblRace.setText("Race:");
-
-        slblCharGender.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        slblCharGender.setText("CharGender:");
-
-        sbtnCharGenderGroup.add(srbtnCharMale);
-        srbtnCharMale.setText("Male");
-        srbtnCharMale.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                srbtnCharMaleItemStateChanged(evt);
-            }
-        });
-
-        sbtnCharGenderGroup.add(srbtnCharFemale);
-        srbtnCharFemale.setText("Female");
-        srbtnCharFemale.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                srbtnCharFemaleItemStateChanged(evt);
-            }
-        });
-
-        sbtnSignUp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        sbtnSignUp.setForeground(new java.awt.Color(0, 153, 51));
-        sbtnSignUp.setText("Sign Up");
-        sbtnSignUp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sbtnSignUpActionPerformed(evt);
-            }
-        });
-
-        stxtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                stxtUsernameKeyReleased(evt);
-            }
-        });
-
-        slblMsgU.setForeground(new java.awt.Color(255, 51, 0));
-
-        slblMsgCG.setForeground(new java.awt.Color(255, 51, 0));
-
-        slblMsgP.setForeground(new java.awt.Color(255, 51, 0));
-
-        slblMsgCP.setForeground(new java.awt.Color(255, 51, 0));
-
-        stxtCfPassword.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                stxtCfPasswordKeyReleased(evt);
-            }
-        });
-
-        cbbRace.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cbbRace.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                cbbRaceItemStateChanged(evt);
-            }
-        });
-
-        slblMsgRace.setForeground(new java.awt.Color(255, 51, 0));
-
-        sbtnSwitchLang.setText("Switch to");
-        sbtnSwitchLang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sbtnSwitchLangActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(50, 50, 50)
-                        .addComponent(sbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(63, 63, 63)
-                        .addComponent(sbtnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slblCfPassword)
-                            .addComponent(slblRace)
-                            .addComponent(slblCharGender))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slblMsgCG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(srbtnCharMale)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                                        .addComponent(srbtnCharFemale)
-                                        .addGap(62, 62, 62))
-                                    .addComponent(cbbRace, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(slblMsgCP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(stxtCfPassword))
-                                .addContainerGap())))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(slblPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(slblUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE))
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(slblMsgU, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(slblMsgP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(stxtPassword)
-                            .addComponent(stxtUsername))
-                        .addContainerGap())))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(slblMsgRace, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(125, 125, 125)
-                .addComponent(sbtnSwitchLang, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jPanel3Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {sbtnLogin, sbtnSignUp});
-
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slblUsername)
-                    .addComponent(stxtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(4, 4, 4)
-                .addComponent(slblMsgU, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slblPassword)
-                    .addComponent(stxtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(slblMsgP, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slblCfPassword)
-                    .addComponent(stxtCfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(slblMsgCP, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slblRace)
-                    .addComponent(cbbRace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addComponent(slblMsgRace, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slblCharGender)
-                    .addComponent(srbtnCharMale)
-                    .addComponent(srbtnCharFemale))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(slblMsgCG, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sbtnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(sbtnSwitchLang, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
-
-        javax.swing.GroupLayout pnlSignUpLayout = new javax.swing.GroupLayout(pnlSignUp);
-        pnlSignUp.setLayout(pnlSignUpLayout);
-        pnlSignUpLayout.setHorizontalGroup(
-            pnlSignUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlSignUpLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlSignUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSignUp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSignUpLayout.createSequentialGroup()
-                        .addGap(0, 80, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 80, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(pnlSignUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlSignUpLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
-                    .addContainerGap()))
-        );
-        pnlSignUpLayout.setVerticalGroup(
-            pnlSignUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlSignUpLayout.createSequentialGroup()
-                .addGap(149, 149, 149)
-                .addComponent(lblSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(pnlSignUpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlSignUpLayout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(679, Short.MAX_VALUE)))
-        );
-
-        getContentPane().add(pnlSignUp, "card2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -486,80 +194,7 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         }
     }
-    
-    private void signUp() {
-        try {
-            String id = stxtUsername.getText().toLowerCase();
-            String password = new String(stxtPassword.getPassword());
-            String cfPassword = new String(stxtCfPassword.getPassword());
-            RaceDAO raceDAO = new RaceDAO();
-            String raceID = "", charGender = "";
-            RaceDTO raceDTO = null;
-            Date date = new Date();
-            Timestamp currentTime = new Timestamp(date.getTime());
             
-            if (id.isEmpty())
-                slblMsgU.setText(rb.getString("blankUser"));
-            if (password.isEmpty())
-                slblMsgP.setText(rb.getString("blankPw"));
-            if (cfPassword.isEmpty())
-                slblMsgCP.setText(rb.getString("blankcnfPw"));
-            if (cbbRace.getSelectedItem().equals(rb.getString("raceEmpt"))) {
-                slblMsgRace.setText(rb.getString("slRace"));
-            } else { //chi truy van database de lay raceID va stats khi da select race
-                raceID = raceDAO.getRaceIDByIndex(this.cbbRace.getSelectedIndex()); //lay index o asc list racename roi suy ra raceid                
-                raceDTO = raceDAO.findByRaceID(raceID);
-            }
-            if (sbtnCharGenderGroup.getSelection() == null) {
-                slblMsgCG.setText(rb.getString("slCharGender"));
-            } else {
-                charGender = sbtnCharGenderGroup.getSelection().getActionCommand();
-                slblMsgCG.setText("");
-            }
-            
-            boolean valid = slblMsgU.getText().isEmpty() && slblMsgP.getText().isEmpty() && slblMsgCP.getText().isEmpty() && slblMsgRace.getText().isEmpty() && slblMsgCG.getText().isEmpty();
-
-            if (valid) {
-                UserDAO userDAO = new UserDAO();               
-                StringBuilder stb = new StringBuilder(id);
-                stb.setCharAt(0, Character.toUpperCase(id.charAt(0))); //in hoa chu cai dau tien
-                id = stb.toString();
-                UserDTO userDTO = new UserDTO(id, "", "", "USER", raceID, charGender, currentTime, raceDTO.getHealth(), raceDTO.getDamage(), raceDTO.getStrength(), 0);
-                userDTO.setPassword(password);
-                userDTO.setScoreDate(currentTime);
-                if (userDAO.insert(userDTO)) {
-                    JOptionPane.showMessageDialog(this, rb.getString("SUS"));
-                    new UserJFrame(id).setVisible(true);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(this, rb.getString("errTry"));
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, rb.getString("inputErr"));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-    
-    private void lbtnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbtnSignUpActionPerformed
-        try { //chi load race len combobox khi signup button duoc chon, giam thoi gian load LoginJFrame khi user chi muon dang nhap
-            RaceDAO dao = new RaceDAO();
-            List<RaceDTO> list = dao.getAllRaces();
-            cbbRace.removeAllItems();
-            cbbRace.addItem(rb.getString("raceEmpt"));
-            for (RaceDTO race : list) {
-                cbbRace.addItem(race.getName()); //chi hien ten Race, khong hien id
-            }
-            slblMsgRace.setText(""); //Chan thong bao loi input race khi bam vao nut Sign Up o login
-            srbtnCharMale.setActionCommand(rb.getString("male"));
-            srbtnCharFemale.setActionCommand(rb.getString("female"));
-        } catch (Exception ex) {
-            Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        switchLayout();
-    }//GEN-LAST:event_lbtnSignUpActionPerformed
-
     private void lbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbtnLoginActionPerformed
         login();
     }//GEN-LAST:event_lbtnLoginActionPerformed
@@ -589,111 +224,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
             login();
     }//GEN-LAST:event_ltxtPasswordKeyPressed
-
-    private void stxtUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stxtUsernameKeyReleased
-        //dung KeyReleased Event de co the kiem tra ngay luc nhap
-        try {
-            String id = stxtUsername.getText();
-            UserDAO userDAO = new UserDAO();
-            if (id.isEmpty()) {
-                slblMsgU.setText("Mã nhân viên không được bỏ trống");
-            } else if (userDAO.isExistedUsername(id)) {
-                slblMsgU.setText("Mã nhân viên đã tồn tại");
-            } else {
-                slblMsgU.setText("");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_stxtUsernameKeyReleased
-
-    private void sbtnSignUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbtnSignUpActionPerformed
-        signUp();
-    }//GEN-LAST:event_sbtnSignUpActionPerformed
-
-    private void stxtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stxtPasswordKeyReleased
-        String password = new String(stxtPassword.getPassword());
-        if (password.isEmpty())
-        slblMsgP.setText(rb.getString("blankPw"));
-        else
-        slblMsgP.setText("");
-    }//GEN-LAST:event_stxtPasswordKeyReleased
-
-    private void sbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbtnLoginActionPerformed
-        switchLayout();
-    }//GEN-LAST:event_sbtnLoginActionPerformed
-
-    private void srbtnCharFemaleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_srbtnCharFemaleItemStateChanged
-        if (!slblMsgCG.getText().isEmpty())
-            slblMsgCG.setText("");
-    }//GEN-LAST:event_srbtnCharFemaleItemStateChanged
-
-    private void srbtnCharMaleItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_srbtnCharMaleItemStateChanged
-        if (!slblMsgCG.getText().isEmpty()) //moi khi trang thai cua button nay thay doi thi se kiem tra label bao loi ben duoi co hay khong de xoa no di
-            slblMsgCG.setText("");
-    }//GEN-LAST:event_srbtnCharMaleItemStateChanged
-
-    private void stxtCfPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_stxtCfPasswordKeyReleased
-        String password = new String(stxtPassword.getPassword());
-        String cfPassword = new String(stxtCfPassword.getPassword());
-        if (cfPassword.isEmpty()) {
-            slblMsgCP.setText(rb.getString("blankcnfPw"));
-        } else if (!cfPassword.equals(password)) {
-            slblMsgCP.setText(rb.getString("mismatchPw"));
-        } else {
-            slblMsgCP.setText("");
-        }
-    }//GEN-LAST:event_stxtCfPasswordKeyReleased
-
-    private void cbbRaceItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbbRaceItemStateChanged
-        if (evt.getItem().equals(rb.getString("raceEmpt")))
-            slblMsgRace.setText(rb.getString("slRace"));
-        else
-            slblMsgRace.setText("");
-        
-    }//GEN-LAST:event_cbbRaceItemStateChanged
-
-    private void sbtnSwitchLangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbtnSwitchLangActionPerformed
-        try {
-            if (language.equalsIgnoreCase("vn")) {
-                language = "en";
-                country = "US";
-            } else {
-                language = "vn";
-                country = "VN";
-            }
-            setUpGUISignUp();
-            if (!slblMsgU.getText().isEmpty()) {
-                String id = stxtUsername.getText();
-                UserDAO userDAO = new UserDAO();
-                if (id.isEmpty()) {
-                    slblMsgU.setText(rb.getString("blankUser"));
-                } else if (userDAO.isExistedUsername(id)) {
-                    slblMsgU.setText(rb.getString("existUser"));
-                }
-            }
-            if (!slblMsgP.getText().isEmpty()) {
-                slblMsgP.setText(rb.getString("blankPw"));
-            }
-            if (!slblMsgCP.getText().isEmpty()) {
-                String password = new String(stxtPassword.getPassword());
-                String cfPassword = new String(stxtCfPassword.getPassword());
-                if (cfPassword.isEmpty()) {
-                    slblMsgCP.setText(rb.getString("blankcnfPw"));
-                } else if (!cfPassword.equals(password)) {
-                    slblMsgCP.setText(rb.getString("mismatchPw"));
-                }
-            }
-            if (!slblMsgRace.getText().isEmpty()) {
-                slblMsgRace.setText(rb.getString("slRace"));
-            }
-            if (!slblMsgCG.getText().isEmpty()) {
-                slblMsgCG.setText(rb.getString("slCharGender"));
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_sbtnSwitchLangActionPerformed
 
     /**
      * @param args the command line arguments
@@ -733,41 +263,15 @@ public class LoginJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cbbRace;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JLabel lblLogin;
-    private javax.swing.JLabel lblSignUp;
     private javax.swing.JButton lbtnLogin;
-    private javax.swing.JButton lbtnSignUp;
     private javax.swing.JLabel llblMsgP;
     private javax.swing.JLabel llblMsgU;
     private javax.swing.JLabel llblPassword;
     private javax.swing.JLabel llblUsername;
     private javax.swing.JPasswordField ltxtPassword;
     private javax.swing.JTextField ltxtUsername;
-    private javax.swing.JPanel pnlLogin;
-    private javax.swing.JPanel pnlSignUp;
-    private javax.swing.ButtonGroup sbtnCharGenderGroup;
-    private javax.swing.JButton sbtnLogin;
-    private javax.swing.JButton sbtnSignUp;
-    private javax.swing.JButton sbtnSwitchLang;
-    private javax.swing.JLabel slblCfPassword;
-    private javax.swing.JLabel slblCharGender;
-    private javax.swing.JLabel slblMsgCG;
-    private javax.swing.JLabel slblMsgCP;
-    private javax.swing.JLabel slblMsgP;
-    private javax.swing.JLabel slblMsgRace;
-    private javax.swing.JLabel slblMsgU;
-    private javax.swing.JLabel slblPassword;
-    private javax.swing.JLabel slblRace;
-    private javax.swing.JLabel slblUsername;
-    private javax.swing.JRadioButton srbtnCharFemale;
-    private javax.swing.JRadioButton srbtnCharMale;
-    private javax.swing.JPasswordField stxtCfPassword;
-    private javax.swing.JPasswordField stxtPassword;
-    private javax.swing.JTextField stxtUsername;
     // End of variables declaration//GEN-END:variables
 }
