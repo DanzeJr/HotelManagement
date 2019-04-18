@@ -26,7 +26,12 @@ public class StaffJFrame extends javax.swing.JFrame {
 
     /**
      * Creates new form StaffJFrame
-     */
+     */    
+    
+    public StaffJFrame() {
+        initComponents();
+    }
+
     public StaffJFrame(String staff) {
         initComponents();
         setLocationRelativeTo(null);

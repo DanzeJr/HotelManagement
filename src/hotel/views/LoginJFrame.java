@@ -2,18 +2,12 @@ package hotel.views;
 
 import hotel.daos.StaffDAO;
 import java.awt.CardLayout;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /*
@@ -33,6 +27,7 @@ public class LoginJFrame extends javax.swing.JFrame {
      */
     public LoginJFrame() {
         initComponents();
+        setLocationRelativeTo(this);
     }
 
     /**
@@ -57,7 +52,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         llblMsgP = new javax.swing.JLabel();
         ltxtUsername = new javax.swing.JTextField();
         ltxtPassword = new javax.swing.JPasswordField();
-        lbtnSwitchLang = new javax.swing.JButton();
         pnlSignUp = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblSignUp = new javax.swing.JLabel();
@@ -85,25 +79,25 @@ public class LoginJFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.CardLayout());
 
-        jLabel4.setFont(new java.awt.Font("Snap ITC", 1, 48)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 48)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 102, 0));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("Oasis");
+        jLabel4.setText("Quản Lý Khách Sạn");
 
         lblLogin.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         lblLogin.setForeground(new java.awt.Color(51, 153, 255));
         lblLogin.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblLogin.setText("Login");
+        lblLogin.setText("Đăng nhập");
 
         llblPassword.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        llblPassword.setText("Password:");
+        llblPassword.setText("Mật khẩu:");
 
         llblUsername.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        llblUsername.setText("Username:");
+        llblUsername.setText("Mã nhân viên:");
 
         lbtnSignUp.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbtnSignUp.setForeground(new java.awt.Color(0, 153, 51));
-        lbtnSignUp.setText("Sign Up");
+        lbtnSignUp.setText("Đăng ký");
         lbtnSignUp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lbtnSignUpActionPerformed(evt);
@@ -112,7 +106,7 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         lbtnLogin.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbtnLogin.setForeground(new java.awt.Color(0, 153, 255));
-        lbtnLogin.setText("Login");
+        lbtnLogin.setText("Đăng nhập");
         lbtnLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lbtnLoginActionPerformed(evt);
@@ -141,19 +135,12 @@ public class LoginJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbtnSwitchLang.setText("Switch to");
-        lbtnSwitchLang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lbtnSwitchLangActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap(130, Short.MAX_VALUE)
+                .addContainerGap(116, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(lbtnLogin)
@@ -170,11 +157,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                             .addComponent(llblMsgP, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(ltxtUsername)
                             .addComponent(ltxtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 244, Short.MAX_VALUE))))
-                .addContainerGap(130, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(205, 205, 205)
-                .addComponent(lbtnSwitchLang, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
 
         jPanel4Layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lbtnLogin, lbtnSignUp});
@@ -198,9 +181,7 @@ public class LoginJFrame extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbtnSignUp, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lbtnLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(54, 54, 54)
-                .addComponent(lbtnSwitchLang, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(100, 100, 100))
         );
 
         javax.swing.GroupLayout pnlLoginLayout = new javax.swing.GroupLayout(pnlLogin);
@@ -576,7 +557,6 @@ public class LoginJFrame extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-        setUpGUISignUp();
         switchLayout();
     }//GEN-LAST:event_lbtnSignUpActionPerformed
 
@@ -587,7 +567,7 @@ public class LoginJFrame extends javax.swing.JFrame {
     private void ltxtUsernameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ltxtUsernameKeyReleased
         String id = ltxtUsername.getText();
         if (id.isEmpty())
-            llblMsgU.setText(rb.getString("blankUser"));
+            llblMsgU.setText("Mã nhân viên không được bỏ trống");
         else
             llblMsgU.setText("");
     }//GEN-LAST:event_ltxtUsernameKeyReleased
@@ -595,7 +575,7 @@ public class LoginJFrame extends javax.swing.JFrame {
     private void ltxtPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ltxtPasswordKeyReleased
         String password = new String(ltxtPassword.getPassword());
         if (password.isEmpty())
-            llblMsgP.setText(rb.getString("blankPw"));
+            llblMsgP.setText("Mật khẩu không được bỏ trống");
         else
             llblMsgP.setText("");
     }//GEN-LAST:event_ltxtPasswordKeyReleased
@@ -616,9 +596,9 @@ public class LoginJFrame extends javax.swing.JFrame {
             String id = stxtUsername.getText();
             UserDAO userDAO = new UserDAO();
             if (id.isEmpty()) {
-                slblMsgU.setText(rb.getString("blankUser"));
+                slblMsgU.setText("Mã nhân viên không được bỏ trống");
             } else if (userDAO.isExistedUsername(id)) {
-                slblMsgU.setText(rb.getString("existUser"));
+                slblMsgU.setText("Mã nhân viên đã tồn tại");
             } else {
                 slblMsgU.setText("");
             }
@@ -640,7 +620,6 @@ public class LoginJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_stxtPasswordKeyReleased
 
     private void sbtnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbtnLoginActionPerformed
-        setUpGUILogin();
         switchLayout();
     }//GEN-LAST:event_sbtnLoginActionPerformed
 
@@ -673,23 +652,6 @@ public class LoginJFrame extends javax.swing.JFrame {
             slblMsgRace.setText("");
         
     }//GEN-LAST:event_cbbRaceItemStateChanged
-
-    private void lbtnSwitchLangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbtnSwitchLangActionPerformed
-        if (language.equalsIgnoreCase("vn")) {
-            language = "en";
-            country = "US";
-        } else {
-            language = "vn";
-            country = "VN";
-        }        
-        setUpGUILogin();
-        if (!llblMsgU.getText().isEmpty()) {
-            llblMsgU.setText(rb.getString("blankUser"));
-        }
-        if (!llblMsgP.getText().isEmpty()) {
-            llblMsgP.setText(rb.getString("blankPw"));
-        }
-    }//GEN-LAST:event_lbtnSwitchLangActionPerformed
 
     private void sbtnSwitchLangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sbtnSwitchLangActionPerformed
         try {
@@ -761,20 +723,11 @@ public class LoginJFrame extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         
-        final String language;
-        final String country;
-        if (args.length != 2) {
-            language = new String("en");
-            country = new String("US");
-        } else {
-            language = new String(args[0]);
-            country = new String(args[1]);
-        }
         
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginJFrame(language, country).setVisible(true);
+                new LoginJFrame().setVisible(true);
             }
         });
     }
@@ -789,7 +742,6 @@ public class LoginJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblSignUp;
     private javax.swing.JButton lbtnLogin;
     private javax.swing.JButton lbtnSignUp;
-    private javax.swing.JButton lbtnSwitchLang;
     private javax.swing.JLabel llblMsgP;
     private javax.swing.JLabel llblMsgU;
     private javax.swing.JLabel llblPassword;
