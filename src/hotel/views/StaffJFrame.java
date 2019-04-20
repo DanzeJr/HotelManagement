@@ -47,7 +47,7 @@ public class StaffJFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.staff = staff;
-        lblWelcome.setText("Welcome back, " + staff.toUpperCase());
+        lblWelcome.setText("Welcome: " + staff.toUpperCase());
         spnBirthDate.setEditor(new JSpinner.DateEditor(spnBirthDate, "dd-MM-yyyy")); //sua lai cach hien thi birth date
         //load toan bo staff vao bang
         tblModelStaffs = (DefaultTableModel) tblStaffs.getModel(); //lay model cua bang staffs
@@ -613,6 +613,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblBookings.setRowHeight(30);
         tblBookings.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblBookings.getTableHeader().setReorderingAllowed(false);
         tblBookings.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -863,6 +864,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblInvoices.setRowHeight(30);
         tblInvoices.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblInvoices.getTableHeader().setReorderingAllowed(false);
         tblInvoices.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -1346,6 +1348,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tblRooms.setRowHeight(30);
         tblRooms.getTableHeader().setReorderingAllowed(false);
         tblRooms.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -1516,6 +1519,7 @@ public class StaffJFrame extends javax.swing.JFrame {
 
         lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(102, 204, 0));
+        lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblWelcome.setText("Welcome:");
 
         btnLogOut.setText("Đăng xuất");
