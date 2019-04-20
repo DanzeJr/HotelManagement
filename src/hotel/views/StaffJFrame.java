@@ -1515,11 +1515,10 @@ public class StaffJFrame extends javax.swing.JFrame {
                     .addComponent(tabPnl)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 826, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblWelcome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnLogOut)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addComponent(btnLogOut)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -1531,7 +1530,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                     .addComponent(lblWelcome, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLogOut))
                 .addGap(18, 18, 18)
-                .addComponent(tabPnl, javax.swing.GroupLayout.DEFAULT_SIZE, 715, Short.MAX_VALUE)
+                .addComponent(tabPnl)
                 .addContainerGap())
         );
 
@@ -2091,6 +2090,7 @@ public class StaffJFrame extends javax.swing.JFrame {
 
             txtBookingCode.setText(code.toUpperCase());
             txtBookingCode.setEditable(false);
+            cbbRoom.addItem(dto.getRoom()); //vi combo box chi load cac phong con trong, phong nay da dat nen phai them thu cong
             cbbRoom.setSelectedItem(dto.getRoom());
             lblPriceRoom.setText(dto.getRoomPrice() + "$");
             spnDuration.setValue(dto.getDuration());

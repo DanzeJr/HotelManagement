@@ -113,15 +113,15 @@ public class BookingDAO implements Serializable{
         Timestamp date;
         
         try {
-            String sql = "SELECT tbl_Bookings.sophong, loai, gia, songay, cmnd, ten, ngaytao"
+            String sql = "SELECT tbl_Bookings.sophong, loai, gia, songay, tbl_Bookings.cmnd, ten, ngaytao"
                     + " FROM tbl_Bookings JOIN tbl_Rooms ON tbl_Bookings.sophong = tbl_Rooms.sophong"
-                    + " JOIN tbl_Bookings.cmnd = tbl_Customers.cmnd WHERE ma = ?";
+                    + " JOIN tbl_Customers ON tbl_Bookings.cmnd = tbl_Customers.cmnd WHERE ma = ?";
             conn = MyConnection.getConnection();
             pre = conn.prepareStatement(sql);
             pre.setString(1, id);
             rs = pre.executeQuery();
             if (rs.next()) {
-                room = rs.getString("tbl_Bookings.sophong") + " - " + rs.getString("loai");
+                room = rs.getString("sophong") + " - " + rs.getString("loai");
                 price = rs.getFloat("gia");
                 duration = rs.getInt("songay");
                 customer = rs.getString("cmnd") + " - " + rs.getString("ten");
