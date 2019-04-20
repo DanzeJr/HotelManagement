@@ -4,6 +4,7 @@ import hotel.daos.StaffDAO;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -180,8 +181,11 @@ public class LoginJFrame extends javax.swing.JFrame {
                 StaffDAO dao = new StaffDAO();
                 boolean check = dao.checkLogin(id, password);
                 if (check) {
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
                     new StaffJFrame(id).setVisible(true);
                     this.dispose();
+                } else {
+                    JOptionPane.showMessageDialog(this, "Tên đăng nhập hoặc mật khẩu không đúng!");
                 }
             } catch (Exception e) {
                 Logger.getLogger(LoginJFrame.class.getName()).log(Level.SEVERE, null, e);

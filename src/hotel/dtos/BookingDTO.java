@@ -14,7 +14,7 @@ import java.util.Vector;
  * @author Danze
  */
 public class BookingDTO implements Serializable{
-    private String code, customer, staff, room;
+    private String code, customer, room;
     private float roomPrice;
     private int duration;
     private Timestamp date;
@@ -29,9 +29,8 @@ public class BookingDTO implements Serializable{
         this.duration = duration;
     }
 
-    public BookingDTO(String customer, String staff, String room, int duration, Timestamp date) {
+    public BookingDTO(String customer, String room, int duration, Timestamp date) {
         this.customer = customer;
-        this.staff = staff;
         this.room = room;
         this.duration = duration;
         this.date = date;
@@ -60,14 +59,6 @@ public class BookingDTO implements Serializable{
 
     public void setCustomer(String customer) {
         this.customer = customer;
-    }
-
-    public String getStaff() {
-        return staff;
-    }
-
-    public void setStaff(String staff) {
-        this.staff = staff;
     }
 
     public String getRoom() {

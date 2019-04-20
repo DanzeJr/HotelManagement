@@ -57,6 +57,24 @@ public class RoomDAO implements Serializable{
         return result;
     }
     
+    public float getPrice(String id) throws Exception {
+        float price = -1;
+        
+        try {
+            String sql = "SELECT gia FROM tbl_Rooms WHERE sophong = ?";
+            conn = MyConnection.getConnection();
+            pre = conn.prepareStatement(sql);
+            pre.setString(1, id);
+            rs = pre.executeQuery();
+            if (rs.next()) {
+                price = rs.getFloat("gia");
+            }
+        } finally {
+            closeConnection();
+        }
+        return price;
+    }
+    
     public RoomDTO findByID(String id) throws Exception {
         RoomDTO dto = null;
         String type;
@@ -83,9 +101,10 @@ public class RoomDAO implements Serializable{
         boolean check = true;
         
         try {
-            String sql = "SELECT sophong FROM (SELECT sophong FROM tbl_Bookings) WHERE sophong = ?";
+            String sql = "SELECT sophong FROM tbl_Bookings WHERE sophong = ?";
             conn = MyConnection.getConnection();
             pre = conn.prepareStatement(sql);
+            pre.setString(1, id);
             rs = pre.executeQuery();
             if (rs.next()) {
                 check = false;
