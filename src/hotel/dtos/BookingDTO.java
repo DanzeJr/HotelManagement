@@ -41,7 +41,7 @@ public class BookingDTO implements Serializable{
         v.add(code);
         v.add(room);
         v.add(customer);
-        v.add(duration + "ngày");
+        v.add(duration + " ngày");
         return v;
     }
 

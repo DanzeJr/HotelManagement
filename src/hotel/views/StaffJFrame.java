@@ -190,11 +190,11 @@ public class StaffJFrame extends javax.swing.JFrame {
     
     private void resetInvoice() {
         txtInvoiceCode.setText("");
-        txtInvoiceCode.setEnabled(true);
+        txtInvoiceCode.setEditable(true);
         lblBookingCode.setText("");
         cbbCustomerInvoice.setSelectedIndex(0);
         cbbCustomerInvoice.setEnabled(true);
-        lblDateCheckOut.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
+        lblDateCheckOut.setText("");
         lblTotalInvoice.setText("");
         
         btnSave.setVisible(false);
@@ -737,7 +737,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                             .addComponent(lblBookingDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(spnDuration)
                             .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(68, 68, 68))
+                        .addContainerGap(68, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(155, 155, 155))))
@@ -803,7 +803,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                 .addGroup(pnlBookingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRefreshCus1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addGap(51, 51, 51)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -916,7 +916,7 @@ public class StaffJFrame extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(78, 78, 78)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addComponent(btnResetInvoice)
@@ -937,7 +937,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                             .addComponent(lblTotalInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblDateCheckOut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtInvoiceCode, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addGap(54, 54, 54))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(btnSave)
@@ -1006,8 +1006,8 @@ public class StaffJFrame extends javax.swing.JFrame {
                 .addGroup(pnlInvoiceLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnRefreshInvoice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnlInvoiceLayout.setVerticalGroup(
@@ -2254,6 +2254,7 @@ public class StaffJFrame extends javax.swing.JFrame {
             BookingDAO dao = new BookingDAO();
             switch (tabPnl.getSelectedIndex()) {
                 case 1:
+                    resetBooking();
                     showAllBookings();
                                         
                     //load ngay dat
@@ -2275,8 +2276,8 @@ public class StaffJFrame extends javax.swing.JFrame {
                         cbbCustomer.addItem(cmnd);
                     }                   
                     break;
-                case 2:                
-                    
+                case 2:
+                    showAllInvoices();
                     //load combo box room
                     listRoom = dao.getAvailableRooms();
                     cbbRoom.removeAllItems();
@@ -2287,16 +2288,18 @@ public class StaffJFrame extends javax.swing.JFrame {
                     
                     //load combo box customer
                     listCMND = dao.getAllCustomers();
-                    cbbCustomer.removeAllItems();
-                    cbbCustomer.addItem("---- Chọn khách hàng ----");
+                    cbbCustomerInvoice.removeAllItems();
+                    cbbCustomerInvoice.addItem("---- Chọn khách hàng ----");
                     for (String cmnd : listCMND) {
-                        cbbCustomer.addItem(cmnd);
+                        cbbCustomerInvoice.addItem(cmnd);
                     }     
                     break;
                 case 3:
+                    resetStaff();
                     showAllStaffs();
                     break;
                 case 4:
+                    resetRoom();
                     showAllRooms();
                     break;
                 default:
@@ -2315,12 +2318,12 @@ public class StaffJFrame extends javax.swing.JFrame {
             InvoiceDTO dto = dao.findByID(code);
 
             txtInvoiceCode.setText(code.toUpperCase());
-            txtInvoiceCode.setEnabled(false);
+            txtInvoiceCode.setEditable(false);
             lblBookingCode.setText(dto.getBookingCode());
             cbbCustomerInvoice.setSelectedItem(dto.getCustomer());
             cbbCustomerInvoice.setEnabled(false);
             lblStaffInvoice.setText(dto.getStaff());
-            lblTotal.setText(dto.getTotal() + "$");
+            lblTotalInvoice.setText(dto.getTotal() + "$");
             lblDateCheckOut.setText(dto.getDate().toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             
             btnDeleteInvoice.setVisible(true);
@@ -2445,9 +2448,9 @@ public class StaffJFrame extends javax.swing.JFrame {
     private void btnCheckOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCheckOutActionPerformed
         LocalDateTime date = LocalDateTime.now();
         txtInvoiceCode.setText(cbbRoom.getSelectedItem().toString().split(" - ")[0] + date.getYear() + date.getMonth() + date.getDayOfMonth() + date.getHour() + date.getMinute() + date.getSecond());
-        txtInvoiceCode.setEnabled(false);
+        txtInvoiceCode.setEditable(false);
         lblBookingCode.setText(txtBookingCode.getText());
-        cbbCustomerInvoice.setSelectedItem(cbbCustomer.getSelectedItem());
+        cbbCustomerInvoice.setSelectedItem(cbbCustomer.getSelectedItem() + "");
         cbbCustomerInvoice.setEnabled(false);
         lblStaffInvoice.setText(this.staff);
         lblTotalInvoice.setText(lblTotal.getText());

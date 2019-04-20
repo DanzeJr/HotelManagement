@@ -439,7 +439,7 @@
                           <Component id="jScrollPane4" min="-2" pref="539" max="-2" attributes="0"/>
                           <Component id="btnRefreshCus1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="51" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -568,7 +568,7 @@
                                       <Component id="spnDuration" max="32767" attributes="0"/>
                                       <Component id="lblTotal" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
+                                  <EmptySpace pref="68" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btnCheckOut" min="-2" pref="209" max="-2" attributes="0"/>
@@ -822,8 +822,8 @@
                           <Component id="jScrollPane5" min="-2" pref="539" max="-2" attributes="0"/>
                           <Component id="btnRefreshInvoice" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="39" max="32767" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Component id="jPanel5" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -909,7 +909,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="btnResetInvoice" min="-2" max="-2" attributes="0"/>
@@ -933,7 +933,7 @@
                                       <Component id="lblDateCheckOut" alignment="0" max="32767" attributes="0"/>
                                       <Component id="txtInvoiceCode" alignment="0" max="32767" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>

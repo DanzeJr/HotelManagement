@@ -73,7 +73,7 @@ public class InvoiceDAO implements Serializable{
             String sql = "SELECT mahoadon, madatphong, manhanvien, ngaythanhtoan, tbl_Bookings.cmnd, ten, gia, songay"
                     + " FROM tbl_Invoices JOIN tbl_Bookings ON tbl_Invoices.madatphong = tbl_Bookings.ma"
                     + " JOIN tbl_Customers ON tbl_Bookings.cmnd = tbl_Customers.cmnd"
-                    + " JOIN tbl_Rooms ON tbl_Bookings.sophong = tble_Rooms.sophong WHERE mahoadon = ?";
+                    + " JOIN tbl_Rooms ON tbl_Bookings.sophong = tbl_Rooms.sophong WHERE mahoadon = ?";
             conn = MyConnection.getConnection();
             pre = conn.prepareStatement(sql);
             pre.setString(1, id);
