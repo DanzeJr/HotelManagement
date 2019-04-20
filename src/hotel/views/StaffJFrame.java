@@ -2227,7 +2227,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(this, "Không tìm thấy phiếu đăng ký nào!");
                 }
             } else {
-                JOptionPane.showMessageDialog(this, "Vui lòng chọn vào một trong những trường sau để tìm kiếm:\n*Mã đặt phòng\n*Số phòng\n*Khách hàng");
+                JOptionPane.showMessageDialog(this, "Vui lòng chọn vào một trong những trường sau để tìm kiếm:\n*Mã đặt phòng\n*Khách hàng");
             }
         } catch (Exception ex) {
             Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
