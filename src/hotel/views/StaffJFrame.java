@@ -2097,15 +2097,21 @@ public class StaffJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_tblRoomsMouseClicked
 
     private void tblBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBookingsMouseClicked
-        try {
+        try {               
             int row = tblBookings.getSelectedRow();
             String code = (String) tblModelBookings.getValueAt(row, 0);
             BookingDAO dao = new BookingDAO();
             BookingDTO dto = dao.findByID(code);
-
+            
+            
             txtBookingCode.setText(code.toUpperCase());
             txtBookingCode.setEditable(false);
+            cbbRoom.removeAllItems();
+            cbbRoom.addItem("---- Chọn số phòng ----");
             cbbRoom.addItem(dto.getRoom()); //vi combo box chi load cac phong con trong, phong nay da dat nen phai them thu cong
+            for (RoomDTO room : dao.getAvailableRooms()) {
+                cbbRoom.addItem(room.getId() + " - " + room.getType());
+            }
             cbbRoom.setSelectedItem(dto.getRoom());
             lblPriceRoom.setText(dto.getRoomPrice() + "$");
             spnDuration.setValue(dto.getDuration());
