@@ -105,6 +105,24 @@ public class BookingDAO implements Serializable{
         return result;
     }
     
+    public boolean hasPayed(String code) throws Exception {
+        boolean check = false;
+        
+        try {
+            String sql = "SELECT madatphong FROM tbl_Invoices WHERE madatphong = ?";
+            conn = MyConnection.getConnection();
+            pre = conn.prepareStatement(sql);
+            pre.setString(1, code);
+            rs = pre.executeQuery();
+            if (rs.next()) {
+                check = true;
+            }
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }
+    
     public BookingDTO findByID(String id) throws Exception {
         BookingDTO dto = null;
         String room, customer;

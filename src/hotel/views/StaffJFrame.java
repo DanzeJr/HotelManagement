@@ -196,6 +196,7 @@ public class StaffJFrame extends javax.swing.JFrame {
         lblBookingDate.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         lblTotal.setText("");
         
+        btnCheckOut.setText("THANH TOÁN");
         btnCheckOut.setEnabled(false);
         btnUpdateBooking.setEnabled(false);
         btnDeleteBooking.setEnabled(false);
@@ -720,19 +721,7 @@ public class StaffJFrame extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnResetBooking)
-                        .addGap(25, 25, 25))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnAddBooking)
-                        .addGap(40, 40, 40)
-                        .addComponent(btnUpdateBooking)
-                        .addGap(47, 47, 47)
-                        .addComponent(btnSearchBooking)
-                        .addGap(51, 51, 51)
-                        .addComponent(btnDeleteBooking)
-                        .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblRoomNum1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -750,10 +739,26 @@ public class StaffJFrame extends javax.swing.JFrame {
                             .addComponent(lblBookingDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(spnDuration)
                             .addComponent(lblTotal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap(68, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(155, 155, 155))))
+                        .addGap(0, 19, Short.MAX_VALUE)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnResetBooking)
+                                .addGap(25, 25, 25))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addComponent(btnAddBooking)
+                                .addGap(40, 40, 40)
+                                .addComponent(btnUpdateBooking)
+                                .addGap(47, 47, 47)
+                                .addComponent(btnSearchBooking)
+                                .addGap(51, 51, 51)
+                                .addComponent(btnDeleteBooking)
+                                .addGap(39, 39, 39))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnCheckOut, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1643,7 +1648,10 @@ public class StaffJFrame extends javax.swing.JFrame {
 //            btnAdd.setEnabled(false);
 //            btnSearch.setEnabled(false);
             btnUpdate.setEnabled(true);
-            btnDelete.setEnabled(true);
+            if (id.equalsIgnoreCase(this.staff)) {
+                btnDelete.setEnabled(false);
+            } else
+                btnDelete.setEnabled(true);
         } catch (Exception ex) {
             Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -2119,7 +2127,13 @@ public class StaffJFrame extends javax.swing.JFrame {
             lblBookingDate.setText(dto.getDate().toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             lblTotal.setText(dto.getRoomPrice() * dto.getDuration() + "$");
             
-            btnCheckOut.setEnabled(true);
+            if (dao.hasPayed(code)) {
+                btnCheckOut.setText("ĐÃ THANH TOÁN");
+                btnCheckOut.setEnabled(false);
+            } else {
+                btnCheckOut.setText("THANH TOÁN");
+                btnCheckOut.setEnabled(true);
+            }
             btnUpdateBooking.setEnabled(true);
             btnDeleteBooking.setEnabled(true);
         } catch (Exception ex) {
