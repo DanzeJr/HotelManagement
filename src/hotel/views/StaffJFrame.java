@@ -2450,14 +2450,14 @@ public class StaffJFrame extends javax.swing.JFrame {
         txtInvoiceCode.setText(cbbRoom.getSelectedItem().toString().split(" - ")[0] + date.getYear() + date.getMonth() + date.getDayOfMonth() + date.getHour() + date.getMinute() + date.getSecond());
         txtInvoiceCode.setEditable(false);
         lblBookingCode.setText(txtBookingCode.getText());
-        cbbCustomerInvoice.setSelectedItem(cbbCustomer.getSelectedItem() + "");
         cbbCustomerInvoice.setEnabled(false);
         lblStaffInvoice.setText(this.staff);
         lblTotalInvoice.setText(lblTotal.getText());
         lblDateCheckOut.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
                 
         btnSave.setVisible(true);
-        tabPnl.setSelectedIndex(2);
+        tabPnl.setSelectedIndex(2);        
+        cbbCustomerInvoice.setSelectedItem(cbbCustomer.getSelectedItem() + "");
     }//GEN-LAST:event_btnCheckOutActionPerformed
 
     private void btnRefreshCusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshCusActionPerformed
