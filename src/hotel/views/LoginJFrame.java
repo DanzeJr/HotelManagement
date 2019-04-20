@@ -1,7 +1,6 @@
 package hotel.views;
 
 import hotel.daos.StaffDAO;
-import java.awt.CardLayout;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -161,11 +160,6 @@ public class LoginJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-        
-    private void switchLayout() {
-        CardLayout layout = (CardLayout) getContentPane().getLayout();
-        layout.next(getContentPane());
-    }
     
     private void login() {
         String id = ltxtUsername.getText().toLowerCase();        
