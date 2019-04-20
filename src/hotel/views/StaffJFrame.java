@@ -2110,6 +2110,7 @@ public class StaffJFrame extends javax.swing.JFrame {
             lblPriceRoom.setText(dto.getRoomPrice() + "$");
             spnDuration.setValue(dto.getDuration());
             cbbCustomer.setSelectedItem(dto.getCustomer());
+            lblBookingDate.setText(dto.getDate().toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
             lblTotal.setText(dto.getRoomPrice() * dto.getDuration() + "$");
             
             btnCheckOut.setEnabled(true);
