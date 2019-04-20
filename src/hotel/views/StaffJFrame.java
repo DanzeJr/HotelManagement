@@ -178,7 +178,7 @@ public class StaffJFrame extends javax.swing.JFrame {
         txtBookingCode.setEditable(true);
         cbbRoom.setSelectedIndex(0);
         lblPriceRoom.setText("");
-        spnDuration.setValue(0);
+        spnDuration.setValue(1);
         cbbCustomer.setSelectedIndex(0);
         lblBookingDate.setText(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
         lblTotal.setText("");
