@@ -176,7 +176,20 @@ public class StaffJFrame extends javax.swing.JFrame {
     private void resetBooking() {
         txtBookingCode.setText("");
         txtBookingCode.setEditable(true);
-        cbbRoom.setSelectedIndex(0);
+        
+        BookingDAO dao = new BookingDAO();
+        //load combo box room
+        List<RoomDTO> listRoom;
+        try {
+            listRoom = dao.getAvailableRooms();
+            cbbRoom.removeAllItems();
+            cbbRoom.addItem("---- Chọn số phòng ----");
+            for (RoomDTO room : listRoom) {
+                cbbRoom.addItem(room.getId() + " - " + room.getType());
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
+        }                     
         lblPriceRoom.setText("");
         spnDuration.setValue(1);
         cbbCustomer.setSelectedIndex(0);
