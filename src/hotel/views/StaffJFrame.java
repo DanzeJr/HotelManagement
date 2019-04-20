@@ -32,6 +32,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class StaffJFrame extends javax.swing.JFrame {
 
+    private String staff;
     private DefaultTableModel tblModelStaffs, tblModelInvoices, tblModelRooms, tblModelCustomers, tblModelBookings;
 
     /**
@@ -45,6 +46,7 @@ public class StaffJFrame extends javax.swing.JFrame {
     public StaffJFrame(String staff) {
         initComponents();
         setLocationRelativeTo(null);
+        this.staff = staff;
         lblWelcome.setText("Welcome back, " + staff.toUpperCase());
         spnBirthDate.setEditor(new JSpinner.DateEditor(spnBirthDate, "dd-MM-yyyy")); //sua lai cach hien thi birth date
         //load toan bo staff vao bang
@@ -935,7 +937,7 @@ public class StaffJFrame extends javax.swing.JFrame {
                             .addComponent(lblTotalInvoice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lblDateCheckOut, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtInvoiceCode, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addGap(68, 68, 68))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(63, 63, 63)
                 .addComponent(btnSave)
@@ -2135,6 +2137,14 @@ public class StaffJFrame extends javax.swing.JFrame {
                 } else {
                     JOptionPane.showMessageDialog(this, "Lỗi! Thử lại sau!");
                 }
+                //load lai combobox cua phong
+                List<RoomDTO> listRoom = dao.getAvailableRooms();
+                cbbRoom.removeAllItems();
+                cbbRoom.addItem("---- Chọn số phòng ----");
+                for (RoomDTO r : listRoom) {
+                    cbbRoom.addItem(r.getId() + " - " + r.getType());
+                }
+                
                 showAllBookings();
                 resetBooking();
             } else {
@@ -2436,8 +2446,13 @@ public class StaffJFrame extends javax.swing.JFrame {
         LocalDateTime date = LocalDateTime.now();
         txtInvoiceCode.setText(cbbRoom.getSelectedItem().toString().split(" - ")[0] + date.getYear() + date.getMonth() + date.getDayOfMonth() + date.getHour() + date.getMinute() + date.getSecond());
         txtInvoiceCode.setEnabled(false);
+        lblBookingCode.setText(txtBookingCode.getText());
         cbbCustomerInvoice.setSelectedItem(cbbCustomer.getSelectedItem());
         cbbCustomerInvoice.setEnabled(false);
+        lblStaffInvoice.setText(this.staff);
+        lblTotalInvoice.setText(lblTotal.getText());
+        lblDateCheckOut.setText(date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+                
         btnSave.setVisible(true);
         tabPnl.setSelectedIndex(2);
     }//GEN-LAST:event_btnCheckOutActionPerformed
