@@ -2206,18 +2206,15 @@ public class StaffJFrame extends javax.swing.JFrame {
     private void btnSearchBookingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchBookingActionPerformed
         try {
             String code = txtBookingCode.getText();
-            String room = "", customer = "";
-            if (cbbRoom.getSelectedIndex() != 0)
-                room = cbbRoom.getSelectedItem().toString().split(" - ")[0];
+            String customer = "";
             if (cbbCustomer.getSelectedIndex() != 0)
                 customer = cbbCustomer.getSelectedItem().toString().split(" - ")[0];
             
-            boolean valid = !(code.isEmpty() && room.isEmpty() && customer.isEmpty());
+            boolean valid = !(code.isEmpty() && customer.isEmpty());
             if (valid) {
                 BookingDAO dao = new BookingDAO();
                 BookingDTO dto = new BookingDTO();
                 dto.setCode(code);
-                dto.setRoom(room);
                 dto.setCustomer(customer);
                 List<BookingDTO> result = dao.search(dto);
                 tblModelBookings.setRowCount(0); //xoa toan bo row tren bang

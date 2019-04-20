@@ -200,13 +200,10 @@ public class BookingDAO implements Serializable{
         
         try {
             String sql = "SELECT ma, sophong, cmnd, songay FROM tbl_Bookings"
-                    + " WHERE ma = ? AND sophong = ? AND cmnd = ?";
+                    + " WHERE ma = ? AND cmnd = ?";
             conn = MyConnection.getConnection();
             if (dto.getCode().isEmpty()) {
                 sql = sql.replace(" ma = ? AND", "");
-            }
-            if (dto.getRoom().isEmpty()) {
-                sql = sql.replace(" sophong = ? AND", "");
             }
             if (dto.getCustomer().isEmpty()) {
                 sql = sql.replace(" AND cmnd = ?", "");
@@ -215,9 +212,6 @@ public class BookingDAO implements Serializable{
             int i = 0;
             if (!dto.getCode().isEmpty()) {
                 pre.setString(++i, dto.getCode());
-            }
-            if (!dto.getRoom().isEmpty()) {
-                pre.setString(++i, dto.getRoom());
             }
             if (!dto.getCustomer().isEmpty()) {
                 pre.setString(++i, dto.getCustomer());
