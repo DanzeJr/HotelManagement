@@ -15,7 +15,6 @@ import hotel.dtos.CustomerDTO;
 import hotel.dtos.InvoiceDTO;
 import hotel.dtos.RoomDTO;
 import hotel.dtos.StaffDTO;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -48,22 +47,14 @@ public class StaffJFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.staff = staff;
         lblWelcome.setText("Welcome: " + staff.toUpperCase());
-        spnBirthDate.setEditor(new JSpinner.DateEditor(spnBirthDate, "dd-MM-yyyy")); //sua lai cach hien thi birth date
         //load toan bo staff vao bang
-        tblModelStaffs = (DefaultTableModel) tblStaffs.getModel(); //lay model cua bang staffs
         tblModelCustomers = (DefaultTableModel) tblCustomers.getModel();
-        tblModelRooms = (DefaultTableModel) tblRooms.getModel();
         tblModelInvoices = (DefaultTableModel) tblInvoices.getModel();
         tblModelBookings = (DefaultTableModel) tblBookings.getModel();
-        tbtnChangePW.setVisible(false);
         btnCusUpdate.setEnabled(false);
         btnCusDelete.setEnabled(false);
         btnUpdateBooking.setEnabled(false);
         btnDeleteBooking.setEnabled(false);
-        btnUpdate.setEnabled(false);
-        btnDelete.setEnabled(false);
-        btnUpdateRoom.setEnabled(false);
-        btnDeleteRoom.setEnabled(false);
         btnCheckOut.setEnabled(false);
         btnSave.setVisible(false);
         btnDeleteInvoice.setVisible(false);
@@ -129,25 +120,6 @@ public class StaffJFrame extends javax.swing.JFrame {
             }
         }
     }
-
-    private void resetStaff() {
-        txtStaffID.setText("");
-        txtStaffID.setEditable(true);
-        txtName.setText("");
-        txtPassword.setText("");
-        txtPassword.setEnabled(true);
-        txtRole.setText("");
-        txtAddress.setText("");
-        txtPhone.setText("");
-        btnGroupGender.clearSelection();
-        spnSalary.setValue((float) 0);
-        spnBirthDate.setValue(new java.util.Date());
-        tbtnChangePW.setVisible(false);
-        tbtnChangePW.setSelected(false);
-        
-        btnUpdate.setEnabled(false);
-        btnDelete.setEnabled(false);
-    }
     
     private void resetCustomer() {
         txtCMND.setText("");
@@ -160,17 +132,6 @@ public class StaffJFrame extends javax.swing.JFrame {
         
         btnCusUpdate.setEnabled(false);
         btnCusDelete.setEnabled(false);
-    }
-    
-    private void resetRoom() {
-        txtRoomNum.setText("");
-        txtRoomNum.setEditable(true);
-        cbbRoomType.setSelectedIndex(0);
-        spnRoomPrice.setValue((float) 0);
-        cbbAvail.setSelectedIndex(0);
-        
-        btnUpdateRoom.setEnabled(false);
-        btnDeleteRoom.setEnabled(false);
     }
     
     private void resetBooking() {
@@ -297,54 +258,6 @@ public class StaffJFrame extends javax.swing.JFrame {
         txtInvoiceCode = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnRefreshInvoice = new javax.swing.JButton();
-        pnlStaff = new javax.swing.JPanel();
-        lblStaffID = new javax.swing.JLabel();
-        txtStaffID = new javax.swing.JTextField();
-        txtName = new javax.swing.JTextField();
-        lblName = new javax.swing.JLabel();
-        lblRole = new javax.swing.JLabel();
-        lblAddress = new javax.swing.JLabel();
-        txtAddress = new javax.swing.JTextField();
-        txtRole = new javax.swing.JTextField();
-        lblGender = new javax.swing.JLabel();
-        rbtnMale = new javax.swing.JRadioButton();
-        rbtnFemale = new javax.swing.JRadioButton();
-        lblBirthDate = new javax.swing.JLabel();
-        txtPhone = new javax.swing.JTextField();
-        lblPhone = new javax.swing.JLabel();
-        btnAdd = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
-        btnDelete = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
-        btnReset = new javax.swing.JButton();
-        spnBirthDate = new javax.swing.JSpinner();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblStaffs = new javax.swing.JTable();
-        lblSalary = new javax.swing.JLabel();
-        spnSalary = new javax.swing.JSpinner();
-        lblPassword = new javax.swing.JLabel();
-        txtPassword = new javax.swing.JPasswordField();
-        tbtnChangePW = new javax.swing.JToggleButton();
-        btnRefresh = new javax.swing.JButton();
-        pnlRoom = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tblRooms = new javax.swing.JTable();
-        jPanel3 = new javax.swing.JPanel();
-        lblRoomNum = new javax.swing.JLabel();
-        txtRoomNum = new javax.swing.JTextField();
-        lblRoomType = new javax.swing.JLabel();
-        cbbRoomType = new javax.swing.JComboBox<>();
-        lblRoomPrice = new javax.swing.JLabel();
-        spnRoomPrice = new javax.swing.JSpinner();
-        lblAvail = new javax.swing.JLabel();
-        btnAddRoom = new javax.swing.JButton();
-        btnUpdateRoom = new javax.swing.JButton();
-        btnSearchRoom = new javax.swing.JButton();
-        btnDeleteRoom = new javax.swing.JButton();
-        btnResetRoom = new javax.swing.JButton();
-        cbbAvail = new javax.swing.JComboBox<>();
-        btnRefreshRoom = new javax.swing.JButton();
         lblWelcome = new javax.swing.JLabel();
         btnLogOut = new javax.swing.JButton();
 
@@ -1045,478 +958,6 @@ public class StaffJFrame extends javax.swing.JFrame {
 
         tabPnl.addTab("Hóa đơn", pnlInvoice);
 
-        lblStaffID.setText("Mã nhân viên:");
-
-        lblName.setText("Tên nhân viên:");
-
-        lblRole.setText("Chức vụ:");
-
-        lblAddress.setText("Địa chỉ:");
-
-        lblGender.setText("Giới tính:");
-
-        btnGroupGender.add(rbtnMale);
-        rbtnMale.setText("Nam");
-
-        btnGroupGender.add(rbtnFemale);
-        rbtnFemale.setText("Nữ");
-
-        lblBirthDate.setText("Ngày sinh:");
-
-        lblPhone.setText("Số điện thoại:");
-
-        btnAdd.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnAdd.setForeground(new java.awt.Color(0, 153, 204));
-        btnAdd.setText("Thêm");
-        btnAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddActionPerformed(evt);
-            }
-        });
-
-        btnUpdate.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnUpdate.setForeground(new java.awt.Color(0, 153, 102));
-        btnUpdate.setText("Cập nhật");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        btnDelete.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 51, 0));
-        btnDelete.setText("Xóa");
-        btnDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteActionPerformed(evt);
-            }
-        });
-
-        btnSearch.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSearch.setText("Tìm kiếm");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-
-        btnReset.setText("Đặt lại");
-        btnReset.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetActionPerformed(evt);
-            }
-        });
-
-        spnBirthDate.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), null, new java.util.Date(), java.util.Calendar.DAY_OF_MONTH));
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Danh sách nhân viên:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 24))); // NOI18N
-
-        tblStaffs.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Mã nhân viên", "Tên", "Chức vụ", "Giới tính"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblStaffs.setRowHeight(30);
-        tblStaffs.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblStaffs.getTableHeader().setReorderingAllowed(false);
-        tblStaffs.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblStaffsMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblStaffs);
-        if (tblStaffs.getColumnModel().getColumnCount() > 0) {
-            tblStaffs.getColumnModel().getColumn(0).setResizable(false);
-            tblStaffs.getColumnModel().getColumn(1).setResizable(false);
-            tblStaffs.getColumnModel().getColumn(2).setResizable(false);
-            tblStaffs.getColumnModel().getColumn(3).setResizable(false);
-        }
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        lblSalary.setText("Lương:");
-
-        spnSalary.setModel(new javax.swing.SpinnerNumberModel(0.0f, 0.0f, null, 1.0f));
-
-        lblPassword.setText("Mật khẩu:");
-
-        tbtnChangePW.setText("Đổi");
-        tbtnChangePW.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tbtnChangePWActionPerformed(evt);
-            }
-        });
-
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlStaffLayout = new javax.swing.GroupLayout(pnlStaff);
-        pnlStaff.setLayout(pnlStaffLayout);
-        pnlStaffLayout.setHorizontalGroup(
-            pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlStaffLayout.createSequentialGroup()
-                .addGap(41, 41, 41)
-                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlStaffLayout.createSequentialGroup()
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlStaffLayout.createSequentialGroup()
-                                .addComponent(lblStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(pnlStaffLayout.createSequentialGroup()
-                                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(lblPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 193, Short.MAX_VALUE)
-                                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(tbtnChangePW)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblSalary, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRole, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblAddress, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtRole, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(spnSalary))
-                        .addGap(80, 80, 80)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBirthDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblPhone, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblGender, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlStaffLayout.createSequentialGroup()
-                                .addComponent(rbtnMale, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(93, 93, 93)
-                                .addComponent(rbtnFemale))
-                            .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
-                            .addComponent(spnBirthDate))
-                        .addGap(40, 40, 40))
-                    .addGroup(pnlStaffLayout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(btnAdd)
-                        .addGap(131, 131, 131)
-                        .addComponent(btnUpdate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(119, 119, 119)
-                        .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(108, 108, 108))))
-            .addGroup(pnlStaffLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStaffLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStaffLayout.createSequentialGroup()
-                        .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(66, 66, 66))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlStaffLayout.createSequentialGroup()
-                        .addComponent(btnRefresh)
-                        .addContainerGap())))
-        );
-
-        pnlStaffLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {spnBirthDate, spnSalary, txtAddress, txtName, txtPassword, txtPhone, txtRole, txtStaffID});
-
-        pnlStaffLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btnAdd, btnDelete, btnUpdate});
-
-        pnlStaffLayout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {lblName, lblPassword, lblStaffID});
-
-        pnlStaffLayout.setVerticalGroup(
-            pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlStaffLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(btnReset)
-                .addGap(35, 35, 35)
-                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(pnlStaffLayout.createSequentialGroup()
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblStaffID)
-                            .addComponent(txtStaffID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRole)
-                            .addComponent(txtRole, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName)
-                            .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSalary)
-                            .addComponent(spnSalary, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, pnlStaffLayout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(spnBirthDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblBirthDate))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblPhone))
-                        .addGap(18, 18, Short.MAX_VALUE)))
-                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAddress)
-                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblGender)
-                    .addComponent(rbtnMale)
-                    .addComponent(rbtnFemale)
-                    .addComponent(tbtnChangePW))
-                .addGap(41, 41, 41)
-                .addGroup(pnlStaffLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnDelete)
-                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addComponent(btnRefresh)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        pnlStaffLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {lblName, lblPassword, lblStaffID});
-
-        pnlStaffLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {spnBirthDate, spnSalary, txtAddress, txtName, txtPassword, txtPhone, txtRole, txtStaffID});
-
-        pnlStaffLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnAdd, btnDelete, btnSearch, btnUpdate});
-
-        tabPnl.addTab("Nhân viên", pnlStaff);
-
-        tblRooms.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Số phòng", "Loại phòng"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        tblRooms.setRowHeight(30);
-        tblRooms.getTableHeader().setReorderingAllowed(false);
-        tblRooms.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblRoomsMouseClicked(evt);
-            }
-        });
-        jScrollPane3.setViewportView(tblRooms);
-        if (tblRooms.getColumnModel().getColumnCount() > 0) {
-            tblRooms.getColumnModel().getColumn(0).setResizable(false);
-            tblRooms.getColumnModel().getColumn(1).setResizable(false);
-        }
-
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết phòng:", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
-
-        lblRoomNum.setText("Số phòng:");
-
-        lblRoomType.setText("Loại phòng:");
-
-        cbbRoomType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "---- Chọn loại phòng ----", "Thường", "VIP" }));
-
-        lblRoomPrice.setText("Giá phòng:");
-
-        spnRoomPrice.setModel(new javax.swing.SpinnerNumberModel(0.0f, 0.0f, null, 1.0f));
-
-        lblAvail.setText("Tình trạng:");
-
-        btnAddRoom.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnAddRoom.setForeground(new java.awt.Color(0, 153, 255));
-        btnAddRoom.setText("Thêm");
-        btnAddRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAddRoomActionPerformed(evt);
-            }
-        });
-
-        btnUpdateRoom.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnUpdateRoom.setForeground(new java.awt.Color(0, 153, 102));
-        btnUpdateRoom.setText("Cập nhật");
-        btnUpdateRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateRoomActionPerformed(evt);
-            }
-        });
-
-        btnSearchRoom.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnSearchRoom.setText("Tìm kiếm");
-        btnSearchRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchRoomActionPerformed(evt);
-            }
-        });
-
-        btnDeleteRoom.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnDeleteRoom.setForeground(new java.awt.Color(255, 51, 0));
-        btnDeleteRoom.setText("Xóa");
-        btnDeleteRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteRoomActionPerformed(evt);
-            }
-        });
-
-        btnResetRoom.setText("Đặt lại");
-        btnResetRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnResetRoomActionPerformed(evt);
-            }
-        });
-
-        cbbAvail.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn trống", "Đã đặt" }));
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(btnAddRoom)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addComponent(btnUpdateRoom)
-                .addGap(47, 47, 47)
-                .addComponent(btnSearchRoom)
-                .addGap(51, 51, 51)
-                .addComponent(btnDeleteRoom)
-                .addGap(39, 39, 39))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(lblAvail, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRoomType, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRoomNum, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblRoomPrice, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtRoomNum)
-                            .addComponent(cbbRoomType, 0, 215, Short.MAX_VALUE)
-                            .addComponent(spnRoomPrice, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbbAvail, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(125, 125, 125))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnResetRoom)
-                        .addGap(25, 25, 25))))
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(btnResetRoom)
-                .addGap(96, 96, 96)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoomNum)
-                    .addComponent(txtRoomNum, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(61, 61, 61)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoomType)
-                    .addComponent(cbbRoomType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoomPrice)
-                    .addComponent(spnRoomPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(57, 57, 57)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblAvail)
-                    .addComponent(cbbAvail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAddRoom)
-                    .addComponent(btnUpdateRoom)
-                    .addComponent(btnSearchRoom)
-                    .addComponent(btnDeleteRoom))
-                .addGap(98, 98, 98))
-        );
-
-        btnRefreshRoom.setText("Refresh");
-        btnRefreshRoom.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshRoomActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout pnlRoomLayout = new javax.swing.GroupLayout(pnlRoom);
-        pnlRoom.setLayout(pnlRoomLayout);
-        pnlRoomLayout.setHorizontalGroup(
-            pnlRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlRoomLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 539, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnRefreshRoom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        pnlRoomLayout.setVerticalGroup(
-            pnlRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlRoomLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlRoomLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnlRoomLayout.createSequentialGroup()
-                        .addComponent(btnRefreshRoom)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3)))
-                .addContainerGap())
-        );
-
-        tabPnl.addTab("Phòng", pnlRoom);
-
         lblWelcome.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         lblWelcome.setForeground(new java.awt.Color(102, 204, 0));
         lblWelcome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -1562,223 +1003,6 @@ public class StaffJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
-        try {
-            String id = txtStaffID.getText();
-            String password = new String(txtPassword.getPassword());
-            String name = txtName.getText().trim();
-            String role = txtRole.getText();
-            String address = txtAddress.getText();
-            String phone = txtPhone.getText();
-            String gender = "";
-            if (rbtnMale.isSelected()) {
-                gender = "Nam";
-            } else if (rbtnFemale.isSelected()) {
-                gender = "Nữ";
-            }
-            float salary = (float) spnSalary.getValue();
-            java.util.Date date = (java.util.Date) spnBirthDate.getValue();
-            Date birthDate = new Date(date.getTime());
-
-            StaffDAO dao = new StaffDAO();
-            String valid = "";
-            if (id.isEmpty()) {
-                valid += "Mã nhân viên không được bỏ trống! \n";
-            } else if (dao.isExistedID(id)) {
-                valid += "Mã nhân viên đã tồn tại! \n";
-            }
-            if (name.isEmpty()) {
-                valid += "Tên không được bỏ trống! \n";
-            }
-            if (password.isEmpty()) {
-                valid += "Mật khẩu không được bỏ trống! \n";
-            }
-            if (role.isEmpty()) {
-                valid += "Chức vụ không được bỏ trống! \n";
-            }
-            if (gender.isEmpty()) {
-                valid += "Vui lòng chọn giới tính! \n";
-            }
-
-            if (valid.isEmpty()) {
-                StaffDTO dto = new StaffDTO(name, role, gender, address, phone, birthDate, salary);
-                dto.setId(id);
-                dto.setPassword(password);
-                if (dao.insert(dto)) {
-                    JOptionPane.showMessageDialog(this, "Thêm thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Lỗi! Thử lại sau!");
-                }
-                showAllStaffs();
-                resetStaff();
-            } else {
-                JOptionPane.showMessageDialog(null, valid);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
-        resetStaff();
-    }//GEN-LAST:event_btnResetActionPerformed
-
-    private void tblStaffsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblStaffsMouseClicked
-        try {
-            int row = tblStaffs.getSelectedRow();
-            String id = (String) tblModelStaffs.getValueAt(row, 0);
-            StaffDAO dao = new StaffDAO();
-            StaffDTO dto = dao.findByID(id);
-
-            txtStaffID.setText(id.toUpperCase());
-            txtStaffID.setEditable(false);
-            txtPassword.setText("");
-            txtPassword.setEnabled(false);
-            tbtnChangePW.setVisible(true);
-            tbtnChangePW.setSelected(false);
-            txtName.setText(dto.getName());
-            txtRole.setText(dto.getRole());
-            txtAddress.setText(dto.getAddress());
-            txtPhone.setText(dto.getPhone());
-            if (dto.getGender().equalsIgnoreCase("Nam")) {
-                rbtnMale.setSelected(true);
-            } else if (dto.getGender().equalsIgnoreCase("Nữ")) {
-                rbtnFemale.setSelected(true);
-            }
-            spnSalary.setValue(dto.getSalary());
-            spnBirthDate.setValue(new Timestamp(dto.getBirthDate().getTime()));
-
-//            btnAdd.setEnabled(false);
-//            btnSearch.setEnabled(false);
-            btnUpdate.setEnabled(true);
-            if (id.equalsIgnoreCase(this.staff)) {
-                btnDelete.setEnabled(false);
-            } else
-                btnDelete.setEnabled(true);
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_tblStaffsMouseClicked
-
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        try {
-            String id = txtStaffID.getText();
-            String password = new String(txtPassword.getPassword());
-            String name = txtName.getText().trim();
-            String role = txtRole.getText();
-            String address = txtAddress.getText();
-            String phone = txtPhone.getText();
-            String gender = "";
-            if (rbtnMale.isSelected()) {
-                gender = "Nam";
-            } else if (rbtnFemale.isSelected()) {
-                gender = "Nữ";
-            }
-            float salary = (float) spnSalary.getValue();
-            java.util.Date date = (java.util.Date) spnBirthDate.getValue();
-            Date birthDate = new Date(date.getTime());
-
-            StaffDAO dao = new StaffDAO();
-            String valid = "";
-            if (name.isEmpty()) {
-                valid += "Tên không được bỏ trống! \n";
-            }
-
-            if (txtPassword.isEnabled() && password.isEmpty()) {
-                valid += "Mật khẩu không được bỏ trống! \n";
-            }
-            if (role.isEmpty()) {
-                valid += "Chức vụ không được bỏ trống! \n";
-            }
-            if (gender.isEmpty()) {
-                valid += "Vui lòng chọn giới tính! \n";
-            }
-
-            if (valid.isEmpty()) {
-                StaffDTO dto = new StaffDTO(name, role, gender, address, phone, birthDate, salary);
-                dto.setId(id);
-                dto.setPassword(password);
-                if (dao.update(dto)) {
-                    JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Lỗi! Thử lại sau!");
-                }
-                showAllStaffs();
-                resetStaff();
-            } else {
-                JOptionPane.showMessageDialog(null, valid);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
-    private void tbtnChangePWActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbtnChangePWActionPerformed
-        if (txtPassword.isEnabled()) {
-            txtPassword.setText("");
-            txtPassword.setEnabled(false);
-        } else {
-            txtPassword.setEnabled(true);
-        }
-    }//GEN-LAST:event_tbtnChangePWActionPerformed
-
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        try {
-            String id = txtStaffID.getText();
-            String name = txtName.getText().trim();
-            String role = txtRole.getText();
-            String address = txtAddress.getText();
-            String phone = txtPhone.getText();
-            String gender = "";
-            if (rbtnMale.isSelected()) {
-                gender = "Nam";
-            } else if (rbtnFemale.isSelected()) {
-                gender = "Nữ";
-            }
-
-            boolean valid = !(id.isEmpty() && name.isEmpty() && gender.isEmpty() && role.isEmpty() && address.isEmpty() && phone.isEmpty());
-            if (valid) {
-                StaffDTO dto = new StaffDTO(name, role, gender, address, phone, null, 0);
-                dto.setId(id);
-                StaffDAO dao = new StaffDAO();
-                List<StaffDTO> result = dao.search(dto);
-                tblModelStaffs.setRowCount(0); //xoa toan bo row tren bang
-                if (!result.isEmpty()) { //neu co staff
-                    for (StaffDTO x : result) {
-                        tblModelStaffs.addRow(x.toVector()); //them vao bang mot row voi mot staff trong listStaff duoc chuyen sang dang Vector
-                    }
-                }
-                if (result.isEmpty()) {
-                    JOptionPane.showMessageDialog(null, "Không tìm thấy nhân viên nào!");
-                }
-            } else {
-                JOptionPane.showMessageDialog(this, "Vui lòng nhập vào một trong những trường sau để tìm kiếm:\n*Mã nhân viên\n*Tên nhân viên\n*Chức vụ\n*Địa chỉ\n*Số điện thoại\n*Giới tính");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnSearchActionPerformed
-
-    private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        try {
-            String id = txtStaffID.getText();
-
-            StaffDAO dao = new StaffDAO();
-            int choice = JOptionPane.showConfirmDialog(this, "Xóa nhân viên này sẽ đồng thời xóa toàn bộ hóa đơn liên quan.\nBạn có chắc muốn tiếp tục?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-            if (choice == JOptionPane.YES_OPTION) {
-                if (dao.delete(id)) {
-                    JOptionPane.showMessageDialog(null, "Xóa thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Lỗi! Thử lại sau!");
-                }
-                showAllStaffs();
-                resetStaff();
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnDeleteActionPerformed
 
     private void btnCusAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCusAddActionPerformed
         try {
@@ -1960,153 +1184,6 @@ public class StaffJFrame extends javax.swing.JFrame {
             Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tblCustomersMouseClicked
-
-    private void btnResetRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetRoomActionPerformed
-        resetRoom();
-    }//GEN-LAST:event_btnResetRoomActionPerformed
-
-    private void btnAddRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddRoomActionPerformed
-        try {
-            String id = txtRoomNum.getText();
-            String type = cbbRoomType.getSelectedItem() + "";
-            float price = (float) spnRoomPrice.getValue();
-
-            RoomDAO dao = new RoomDAO();
-            String valid = "";
-            if (id.isEmpty()) {
-                valid += "Số phòng không được bỏ trống! \n";
-            } else if (dao.isExistedID(id)) {
-                valid += "SỐ phòng đã tồn tại! \n";
-            }
-            if (cbbRoomType.getSelectedIndex() == 0) {
-                valid += "Vui lòng chọn loại phòng! \n";
-            }
-            if (price <= 0) {
-                valid += "Giá phòng phải lớn hơn 0! \n";
-            }
-
-            if (valid.isEmpty()) {
-                RoomDTO dto = new RoomDTO(type, price);
-                dto.setId(id);
-                if (dao.insert(dto)) {
-                    JOptionPane.showMessageDialog(this, "Thêm thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Lỗi! Thử lại sau!");
-                }
-                showAllRooms();
-                resetRoom();
-            } else {
-                JOptionPane.showMessageDialog(null, valid);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnAddRoomActionPerformed
-
-    private void btnUpdateRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateRoomActionPerformed
-        try {
-            String id = txtRoomNum.getText();
-            String type = cbbRoomType.getSelectedItem() + "";
-            float price = (float) spnRoomPrice.getValue();
-
-            RoomDAO dao = new RoomDAO();
-            String valid = "";
-            if (cbbRoomType.getSelectedIndex() == 0) {
-                valid += "Vui lòng chọn loại phòng! \n";
-            }
-            if (price <= 0) {
-                valid += "Giá phòng phải lớn hơn 0! \n";
-            }
-
-            if (valid.isEmpty()) {
-                RoomDTO dto = new RoomDTO(type, price);
-                dto.setId(id);
-                if (dao.update(dto)) {
-                    JOptionPane.showMessageDialog(this, "Cập nhật thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(this, "Lỗi! Thử lại sau!");
-                }
-                showAllRooms();
-                resetRoom();
-            } else {
-                JOptionPane.showMessageDialog(null, valid);
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnUpdateRoomActionPerformed
-
-    private void btnSearchRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchRoomActionPerformed
-        try {
-            String id = txtRoomNum.getText();
-            String type = "";
-            if (cbbRoomType.getSelectedIndex() != 0)
-                type = cbbRoomType.getSelectedItem() + "";
-            boolean isAvail = cbbAvail.getSelectedItem().equals("Còn trống");
-            
-            RoomDAO dao = new RoomDAO();
-            RoomDTO dto = new RoomDTO();
-            dto.setId(id);
-            dto.setType(type);
-            dto.setAvail(isAvail);
-            List<RoomDTO> result = dao.search(dto);
-            tblModelRooms.setRowCount(0); //xoa toan bo row tren bang
-            if (!result.isEmpty()) { //neu co phong
-                for (RoomDTO x : result) {
-                    tblModelRooms.addRow(x.toVector()); //them vao bang mot row voi mot phong trong list duoc chuyen sang dang Vector
-                }
-            }
-            if (result.isEmpty()) {
-                JOptionPane.showMessageDialog(null, "Không tìm thấy phòng nào!");
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnSearchRoomActionPerformed
-
-    private void btnDeleteRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteRoomActionPerformed
-        try {
-            String id = txtRoomNum.getText();
-
-            RoomDAO dao = new RoomDAO();
-            int choice = JOptionPane.showConfirmDialog(this, "Xóa phòng này sẽ đồng thời xóa toàn bộ hóa đơn và phiếu đăng ký liên quan.\nBạn có chắc muốn tiếp tục?", "Xác nhận", JOptionPane.YES_NO_OPTION);
-            if (choice == JOptionPane.YES_OPTION) {
-                if (dao.delete(id)) {
-                    JOptionPane.showMessageDialog(null, "Xóa thành công!");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Lỗi! Thử lại sau!");
-                }
-                showAllRooms();
-                resetRoom();
-            }
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnDeleteRoomActionPerformed
-
-    private void tblRoomsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRoomsMouseClicked
-        try {
-            int row = tblRooms.getSelectedRow();
-            String id = (String) tblModelRooms.getValueAt(row, 0);
-            RoomDAO dao = new RoomDAO();
-            RoomDTO dto = dao.findByID(id);
-
-            txtRoomNum.setText(id.toUpperCase());
-            txtRoomNum.setEditable(false);
-            cbbRoomType.setSelectedItem(dto.getType());
-            spnRoomPrice.setValue(dto.getPrice());
-            if (dao.isAvailable(id)) {
-                cbbAvail.setSelectedIndex(0);
-            } else {
-                cbbAvail.setSelectedIndex(1);
-            }
-            
-            btnUpdateRoom.setEnabled(true);
-            btnDeleteRoom.setEnabled(true);
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_tblRoomsMouseClicked
 
     private void tblBookingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblBookingsMouseClicked
         try {               
@@ -2329,14 +1406,6 @@ public class StaffJFrame extends javax.swing.JFrame {
                         cbbCustomerInvoice.addItem(cmnd);
                     }     
                     break;
-                case 3:
-                    resetStaff();
-                    showAllStaffs();
-                    break;
-                case 4:
-                    resetRoom();
-                    showAllRooms();
-                    break;
                 default:
                     break;
             }
@@ -2519,22 +1588,6 @@ public class StaffJFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnRefreshInvoiceActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        try {
-            showAllStaffs();
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
-    private void btnRefreshRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshRoomActionPerformed
-        try {
-            showAllRooms();
-        } catch (Exception ex) {
-            Logger.getLogger(StaffJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btnRefreshRoomActionPerformed
-
     private void btnLogOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogOutActionPerformed
         this.dispose();
         new LoginJFrame().setVisible(true);
@@ -2566,6 +1619,9 @@ public class StaffJFrame extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(StaffJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -2576,62 +1632,41 @@ public class StaffJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnAddBooking;
-    private javax.swing.JButton btnAddRoom;
     private javax.swing.JButton btnCheckOut;
     private javax.swing.JButton btnCusAdd;
     private javax.swing.JButton btnCusDelete;
     private javax.swing.JButton btnCusReset;
     private javax.swing.JButton btnCusSearch;
     private javax.swing.JButton btnCusUpdate;
-    private javax.swing.JButton btnDelete;
     private javax.swing.JButton btnDeleteBooking;
     private javax.swing.JButton btnDeleteInvoice;
-    private javax.swing.JButton btnDeleteRoom;
     private javax.swing.ButtonGroup btnGroupGender;
     private javax.swing.ButtonGroup btnGroupGenderCus;
     private javax.swing.JButton btnLogOut;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRefreshCus;
     private javax.swing.JButton btnRefreshCus1;
     private javax.swing.JButton btnRefreshInvoice;
-    private javax.swing.JButton btnRefreshRoom;
-    private javax.swing.JButton btnReset;
     private javax.swing.JButton btnResetBooking;
     private javax.swing.JButton btnResetInvoice;
-    private javax.swing.JButton btnResetRoom;
     private javax.swing.JButton btnSave;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSearchBooking;
     private javax.swing.JButton btnSearchInvoice;
-    private javax.swing.JButton btnSearchRoom;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JButton btnUpdateBooking;
-    private javax.swing.JButton btnUpdateRoom;
-    private javax.swing.JComboBox<String> cbbAvail;
     private javax.swing.JComboBox<String> cbbCustomer;
     private javax.swing.JComboBox<String> cbbCustomerInvoice;
     private javax.swing.JComboBox<String> cbbRoom;
-    private javax.swing.JComboBox<String> cbbRoomType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblAvail;
     private javax.swing.JLabel lblAvail2;
     private javax.swing.JLabel lblAvail3;
     private javax.swing.JLabel lblAvail4;
-    private javax.swing.JLabel lblBirthDate;
     private javax.swing.JLabel lblBookingCode;
     private javax.swing.JLabel lblBookingDate;
     private javax.swing.JLabel lblCMND;
@@ -2641,26 +1676,16 @@ public class StaffJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel lblCusName;
     private javax.swing.JLabel lblCusPhone;
     private javax.swing.JLabel lblDateCheckOut;
-    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblInvoiceCode;
-    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNationality;
-    private javax.swing.JLabel lblPassword;
-    private javax.swing.JLabel lblPhone;
     private javax.swing.JLabel lblPriceRoom;
-    private javax.swing.JLabel lblRole;
-    private javax.swing.JLabel lblRoomNum;
     private javax.swing.JLabel lblRoomNum1;
     private javax.swing.JLabel lblRoomNum2;
-    private javax.swing.JLabel lblRoomPrice;
     private javax.swing.JLabel lblRoomPrice1;
     private javax.swing.JLabel lblRoomPrice2;
     private javax.swing.JLabel lblRoomPrice3;
-    private javax.swing.JLabel lblRoomType;
     private javax.swing.JLabel lblRoomType1;
     private javax.swing.JLabel lblRoomType2;
-    private javax.swing.JLabel lblSalary;
-    private javax.swing.JLabel lblStaffID;
     private javax.swing.JLabel lblStaffInvoice;
     private javax.swing.JLabel lblTotal;
     private javax.swing.JLabel lblTotalInvoice;
@@ -2668,24 +1693,13 @@ public class StaffJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel pnlBooking;
     private javax.swing.JPanel pnlCustomer;
     private javax.swing.JPanel pnlInvoice;
-    private javax.swing.JPanel pnlRoom;
-    private javax.swing.JPanel pnlStaff;
     private javax.swing.JRadioButton rbtnCusFemale;
     private javax.swing.JRadioButton rbtnCusMale;
-    private javax.swing.JRadioButton rbtnFemale;
-    private javax.swing.JRadioButton rbtnMale;
-    private javax.swing.JSpinner spnBirthDate;
     private javax.swing.JSpinner spnDuration;
-    private javax.swing.JSpinner spnRoomPrice;
-    private javax.swing.JSpinner spnSalary;
     private javax.swing.JTabbedPane tabPnl;
     private javax.swing.JTable tblBookings;
     private javax.swing.JTable tblCustomers;
     private javax.swing.JTable tblInvoices;
-    private javax.swing.JTable tblRooms;
-    private javax.swing.JTable tblStaffs;
-    private javax.swing.JToggleButton tbtnChangePW;
-    private javax.swing.JTextField txtAddress;
     private javax.swing.JTextField txtBookingCode;
     private javax.swing.JTextField txtCMND;
     private javax.swing.JTextField txtCountry;
@@ -2693,11 +1707,5 @@ public class StaffJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtCusName;
     private javax.swing.JTextField txtCusPhone;
     private javax.swing.JTextField txtInvoiceCode;
-    private javax.swing.JTextField txtName;
-    private javax.swing.JPasswordField txtPassword;
-    private javax.swing.JTextField txtPhone;
-    private javax.swing.JTextField txtRole;
-    private javax.swing.JTextField txtRoomNum;
-    private javax.swing.JTextField txtStaffID;
     // End of variables declaration//GEN-END:variables
 }

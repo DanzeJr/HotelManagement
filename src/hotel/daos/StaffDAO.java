@@ -33,23 +33,23 @@ public class StaffDAO implements Serializable{
             conn.close();
     }
     
-    public boolean checkLogin(String id, String password) throws Exception {
-        boolean check = false;
+    public String checkLogin(String id, String password) throws Exception {
+        String role = "";
         
         try {
             conn = MyConnection.getConnection();
-            String sql = "SELECT manhanvien FROM tbl_Staffs WHERE manhanvien = ? AND matkhau = ?";
+            String sql = "SELECT chucvu FROM tbl_Staffs WHERE manhanvien = ? AND matkhau = ?";
             pre = conn.prepareStatement(sql);
             pre.setString(1, id);
             pre.setString(2, password);
             rs = pre.executeQuery();
             if (rs.next()) {
-                check = true;
+                role = rs.getString("chucvu");
             }
         } finally {
             closeConnection();
         }
-        return check;
+        return role;
     }
     
     public List<StaffDTO> getAllStaffs() throws Exception {

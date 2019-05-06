@@ -179,8 +179,12 @@ public class LoginJFrame extends javax.swing.JFrame {
         if (valid) {
             try {
                 StaffDAO dao = new StaffDAO();
-                boolean check = dao.checkLogin(id, password);
-                if (check) {
+                String role = dao.checkLogin(id, password);
+                if (role.equalsIgnoreCase("Quản lý")) {
+                    JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
+                    new AdminJFrame(id).setVisible(true);
+                    this.dispose();
+                } else if (role.equalsIgnoreCase("Lễ tân")) {
                     JOptionPane.showMessageDialog(this, "Đăng nhập thành công!");
                     new StaffJFrame(id).setVisible(true);
                     this.dispose();
