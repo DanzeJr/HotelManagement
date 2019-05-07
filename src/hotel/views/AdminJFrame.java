@@ -189,7 +189,10 @@ public class AdminJFrame extends javax.swing.JFrame {
             }
         } catch (Exception ex) {
             Logger.getLogger(AdminJFrame.class.getName()).log(Level.SEVERE, null, ex);
-        }                     
+        }
+        cbbRoom.setEnabled(true);
+        cbbCustomer.setEnabled(true);
+        spnDuration.setEnabled(true);
         lblPriceRoom.setText("");
         spnDuration.setValue(1);
         cbbCustomer.setSelectedIndex(0);
@@ -2123,8 +2126,19 @@ public class AdminJFrame extends javax.swing.JFrame {
             cbbRoom.removeAllItems();
             cbbRoom.addItem("---- Chọn số phòng ----");
             cbbRoom.addItem(dto.getRoom()); //vi combo box chi load cac phong con trong, phong nay da dat nen phai them thu cong
-            for (RoomDTO room : dao.getAvailableRooms()) {
-                cbbRoom.addItem(room.getId() + " - " + room.getType());
+            if (dao.isDone(code)) {
+                cbbRoom.setEnabled(false);
+                cbbCustomer.setEnabled(false);
+                spnDuration.setEnabled(false);
+                btnUpdateBooking.setEnabled(false);
+            } else {
+                for (RoomDTO room : dao.getAvailableRooms()) {
+                    cbbRoom.addItem(room.getId() + " - " + room.getType());
+                }
+                cbbRoom.setEnabled(true);
+                cbbCustomer.setEnabled(true);
+                spnDuration.setEnabled(true);
+                btnUpdateBooking.setEnabled(true);
             }
             cbbRoom.setSelectedItem(dto.getRoom());
             lblPriceRoom.setText(dto.getRoomPrice() + "$");

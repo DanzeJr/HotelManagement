@@ -59,14 +59,14 @@ public class BookingDAO implements Serializable{
         }
         return result;
     }
-    
+        
     public List<RoomDTO> getAvailableRooms() throws Exception {
         List<RoomDTO> result = null;
         RoomDTO dto;
         String id, type;
         
         try {
-            String sql = "SELECT sophong, loai FROM tbl_Rooms WHERE sophong NOT IN (SELECT sophong FROM tbl_Bookings)";
+            String sql = "SELECT sophong, loai FROM tbl_Rooms WHERE sophong NOT IN (SELECT sophong FROM tbl_Bookings WHERE DATEDIFF(day, ngaytao, GETDATE()) <= songay)";
             conn = MyConnection.getConnection();
             pre = conn.prepareStatement(sql);
             rs = pre.executeQuery();
@@ -110,6 +110,24 @@ public class BookingDAO implements Serializable{
         
         try {
             String sql = "SELECT madatphong FROM tbl_Invoices WHERE madatphong = ?";
+            conn = MyConnection.getConnection();
+            pre = conn.prepareStatement(sql);
+            pre.setString(1, code);
+            rs = pre.executeQuery();
+            if (rs.next()) {
+                check = true;
+            }
+        } finally {
+            closeConnection();
+        }
+        return check;
+    }    
+    
+    public boolean isDone(String code) throws Exception {
+        boolean check = false;
+        
+        try {
+            String sql = "SELECT sophong FROM tbl_Bookings WHERE ma = ? AND DATEDIFF(day, ngaytao, GETDATE()) > songay";
             conn = MyConnection.getConnection();
             pre = conn.prepareStatement(sql);
             pre.setString(1, code);
