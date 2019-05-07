@@ -101,7 +101,7 @@ public class RoomDAO implements Serializable{
         boolean check = true;
         
         try {
-            String sql = "SELECT sophong FROM tbl_Bookings WHERE sophong = ?";
+            String sql = "SELECT sophong FROM tbl_Bookings WHERE sophong = ? AND DATEDIFF(day, ngaytao, GETDATE()) <= songay";
             conn = MyConnection.getConnection();
             pre = conn.prepareStatement(sql);
             pre.setString(1, id);

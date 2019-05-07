@@ -168,6 +168,7 @@ public class AdminJFrame extends javax.swing.JFrame {
         cbbRoomType.setSelectedIndex(0);
         spnRoomPrice.setValue((float) 0);
         cbbAvail.setSelectedIndex(0);
+        cbbAvail.setEnabled(true);
         
         btnUpdateRoom.setEnabled(false);
         btnDeleteRoom.setEnabled(false);
@@ -2107,6 +2108,7 @@ public class AdminJFrame extends javax.swing.JFrame {
                 cbbAvail.setSelectedIndex(1);
             }
             
+            cbbAvail.setEnabled(false);
             btnUpdateRoom.setEnabled(true);
             btnDeleteRoom.setEnabled(true);
         } catch (Exception ex) {
