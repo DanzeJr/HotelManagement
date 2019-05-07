@@ -2154,7 +2154,6 @@ public class AdminJFrame extends javax.swing.JFrame {
                 btnCheckOut.setText("THANH TOÁN");
                 btnCheckOut.setEnabled(true);
             }
-            btnUpdateBooking.setEnabled(true);
             btnDeleteBooking.setEnabled(true);
         } catch (Exception ex) {
             Logger.getLogger(AdminJFrame.class.getName()).log(Level.SEVERE, null, ex);
