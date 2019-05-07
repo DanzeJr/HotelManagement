@@ -176,13 +176,13 @@ public class RoomDAO implements Serializable{
         
         try {
             String sql = "SELECT sophong, loai FROM tbl_Rooms"
-                    + " WHERE sophong = ? AND type = ? AND sophong NOT IN (SELECT sophong FROM tbl_Bookings)";
+                    + " WHERE sophong = ? AND loai = ? AND sophong NOT IN (SELECT sophong FROM tbl_Bookings)";
             conn = MyConnection.getConnection();
             if (dto.getId().isEmpty()) {
                 sql = sql.replace(" sophong = ? AND", "");
             }
             if (dto.getType().isEmpty()) {
-                sql = sql.replace(" type = ? AND", "");
+                sql = sql.replace(" loai = ? AND", "");
             }
             if (!dto.isAvail()) {
                 sql = sql.replace("NOT ", "");
